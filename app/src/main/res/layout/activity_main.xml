@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--데이터 바인딩은 root 요소로 layout 요소가 배치되어야 함.-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+<!--  1. 뷰들과 연결될 데이터를 설정  -->
+    <data>
+        <variable
+            name="user"
+            type="com.lux.ex079databinding.User" />
+    </data>
+
+<!--  2. layout view : 기존의 root 였던 뷰  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}"
+            android:textColor="@color/black"
+            android:padding="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(user.age)}"
+            android:textColor="@color/black"
+            android:padding="8dp"/>
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="change data"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="change data by data binding"
+            android:backgroundTint="@color/black"
+            android:onClick="@{user::changeData}"/>
+
+    </LinearLayout>
+
+
+</layout>
